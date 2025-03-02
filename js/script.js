@@ -5,7 +5,7 @@ document.getElementById('message-close-button').addEventListener('click',functio
     document.getElementById('message-dialog').classList.remove('is-active');
 });
 
-fetch('../menu.html')
+fetch('/menu.html')
   .then(response => response.text())
   .then(html => {
     const parser = new DOMParser();
@@ -27,7 +27,7 @@ fetch('../menu.html')
     document.getElementById('menu-placeholder').innerHTML = doc.body.innerHTML;
   });
 
-fetch('../footer.html')
+fetch('/footer.html')
 .then(response => response.text())
 .then(html => {
   document.getElementById('footer-placeholder').innerHTML = html;
