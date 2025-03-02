@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>楠木正成公非公式ファンサイト</title>
+        <link rel="icon" href="img/favicon.ico">
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+        <link rel="manifest" href="img/site.webmanifest">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <section class="hero">
+                <div class="hero-body" 
+                data-aos="fade-down" 
+                data-aos-duration="1000" 
+                style="background-image: url('img/junsetsu.JPG'); background-size: cover; background-color:rgba(255,255,255,0.5); background-blend-mode:lighten;">
+                    <h1 class="title">武将・楠木正成</h1>
+                    <p class="subtitle">武将としての楠木正成公について</p>
+                    <button id="btnAbout" class="button is-primary">このページについて</button>
+                </div>
+            </section>
+
+            <div id="menu-placeholder"></div>
+
+            <div class="columns">
+                <div class="column is-full">
+                    <div class="content m-5">
+                        <div class="box">
+                            <h2 class="subtitle">概要</h2>
+                            <p>
+                                楠木正成は鎌倉時代末期から南北朝時代にかけての武将です。<br>
+                                後醍醐天皇の令に従い倒幕に貢献し、建武の新政においては重臣として天皇を助けました。<br>
+                                足利尊氏が離反して以降も引き続き後醍醐天皇の配下として軍を指揮しましたが、湊川の戦いで敗北して弟・正季と共に自害しました。<br>
+                                出自・身分については諸説あり、太平記では橘諸兄の後裔である河内の土豪として描かれました。<br>
+                                駿河国出身の鎌倉幕府関係者説も提唱されているそうです。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column m-3">
+                    <div class="card">
+                        <div class="card-image"
+                            data-aos="fade-right" 
+                            data-aos-duration="1000" >
+                            <figure class="image">
+                                <img src="img/riding.JPG" alt="" />
+                            </figure>
+                        </div>
+                        <div class="content">
+                            <p>楠木正成公 騎馬像（湊川公園）</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column m-3">
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">出自について</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            楠木正成の出自については、河内の豪族というのが通説でした（私が学生の頃にはそう習った）。<br />
+                            永仁3年（1295年）の古文書に一族の人間と思われる「河内楠入道」という人物の名前があり、河内の国名記載があることからこの時点で河内を拠点としていたことは間違いないようです。<br />
+                            ただ、当時は本拠の土地を名字として使うことが一般的でしたが、「楠木」または「楠」の地名は河内国周辺にはなく、ルーツは別の土地であった可能性が示唆されています。<br />
+                            その点において可能性が高いとされているのが、鎌倉後期に<abbr title="畿内や西国に地頭職を与えられ一族で移住した東国武士">西遷御家人</abbr>や<abbr title="鎌倉幕府の北条氏惣領の家系（得宗）に仕えた武士・被官・従者">得宗被官</abbr>を多く輩出した駿河国、入江荘の楠木村です。<br />
+                            当時の人々が楠木正成を鎌倉幕府の関係者と認識していた可能性は高いようで、千早城の戦いの頃に京都で「楠の木の根はかまくらになるものを枝を切りにと何のほるらん（楠木家はもともと鎌倉（幕府）の人間だろうに、末裔の討伐にわざわざ京へ上ってくるのは何故だろうな）」という歌が詠まれたそうです。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">悪党説について</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            天龍寺文書の中に「悪党楠兵衛尉」という名で楠木正成の記述があります。<br />
+                            元徳3年（1331年）に挙兵する直前、「悪党楠兵衛尉」が和泉国若松荘を占拠したというものです。<br />
+                            若松荘は後醍醐天皇と縁のある荘園ですが、正成が占拠するより少し前に所有に関してごたついていました。<br />
+                            もともと臨川寺の所有だったこの荘園、この年の2月に後醍醐天皇から彼の側近・道祐に与えられています。<br />
+                            結局臨川寺側からの抗議で撤回されたのですが、直後に先述した通り楠木正成によって占拠されました。<br /><br />
+                            天龍寺文書は臨川寺が自分の領地の安堵について上皇に訴えるものとして書かれたとのこと。<br />
+                            当時の上皇が持明院統の後伏見上皇だったのに対して、臨川寺は大覚寺統の醍醐天皇から許可を得て寺になった成り立ちがありました。<br />
+                            両統迭立に反対して倒幕を企てた後醍醐天皇の存在が後伏見上皇にとって好ましいとは思えず、臨川寺も後醍醐天皇側の勢力を悪く言わないと所領を認めてもらえないと感じて「悪党」と書いたのかもしれません。<br />
+                            日本史の中での「悪党」という言葉は単に「悪い奴」という意味とは少し違いますが、この文書で明確に記述されたことが、楠木正成悪党説のひとつの根拠とされています。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">後醍醐天皇との出会いについて</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            『太平記』における二人の出会いは、後醍醐天皇が笠置山で籠城していた頃に見た夢から始まります。<br />
+                            二人の童子が大木の下に設けられた南の玉座を示して座るよう促すという夢で、天皇は「<abbr title="日光遍照菩薩・月光遍照菩薩という、それぞれ日光と月光を象徴する一対の菩薩">日光・月光菩薩</abbr>の化身がふたたび天子として世を治めろという暗示であり、木に南、すなわち楠という者を従えろということだ」と解釈しました。<br />
+                            こうして召し出された楠木正成は後醍醐天皇との謁見を経て忠誠を誓い挙兵する流れとなります。<br />
+                            一方で『増鏡』では笠置山に集った近隣武将の中でも天皇が当初から頼りにしていたのが正成であり、正成側も笠置山が陥落した場合に天皇を迎え入れられるように自身の館を改修していたとも言われています。<br />
+                            悪党説の項で、若松荘の占拠に関しては臨川寺がお上のおぼえを気にして後醍醐天皇勢力を悪く書いたのでは？と述べましたが、実際この乱入は後醍醐天皇との連携の下で行われ、正成の軍費を捻出するための所領として与えられていたという説があるそうです。<br />
+                            どうも二人は挙兵より前に協力体制にあった気配が濃厚ですが、どんないきさつで出会ったのかは不明なままです。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">最初の挙兵</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            元弘元年9月11日、楠木正成はここで初めて後醍醐天皇側に立って赤坂城で挙兵しました。<br />
+                            小規模勢力が急ごしらえの小城で籠城、と聞けば幕府側も侮ろうもの。しかし楠木軍は予想に反して手ごわく、奇策を尽くして幕府軍を撃退しました。<br />
+                            この間に笠置山が陥落したこともあって最終的には城を捨てて敗走することになりますが、手ひどくやられた幕府軍には楠木正成の戦が強く印象付けられたことでしょう。<br />
+                            しかし、後醍醐天皇は捕らえられて六波羅に送られ、最終的には隠岐に流罪。主な将たる護良親王と楠木正成も姿をくらますことになりました。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">二度目の挙兵</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            正慶元年12月、赤坂城を去って以降行方知れずとなっていた楠木正成が紀伊で挙兵しました。<br />
+                            同時期に護良親王も吉野で挙兵し、幕府は直ちに両者の討伐を命じます。<br />
+                            しかし正成は紀伊隅田荘の幕府方勢力であった隅田党を破ると接収されていた赤坂城を奪還し、年が明けてさほど経たないうちに河内や和泉で幕府方を圧倒しました。<br />
+                            そして月末には赤坂城を味方に任せて千早城に籠り、吉野・赤坂・千早の三拠点で幕府に対抗することになります。<br />
+                            その後、二月の末から赤坂、吉野と味方の城が落とされますが、千早城はとうとう落とされることはありませんでした。<br />
+                            出自の項に出てきた「楠の木の根は…」の歌が詠まれたのはこの頃だそうです。<br /><br />
+                            楠木軍が抵抗を続ける間に隠岐に流されていた後醍醐天皇が脱出して船上山で挙兵、倒幕の綸旨を発して倒幕の気運を高めていきます。<br />
+                            一方で攻めあぐねる幕府軍の士気は下がり、後醍醐天皇の綸旨に加えて護良親王の令旨も届いていよいよ幕府を見限る武将も現れるようになりました。<br />
+                            楠木正成の戦が長引いたことで、足利高氏（尊氏）が後醍醐天皇を捕らえるという幕府の命に背いて六波羅探題を攻め落とし、新田義貞が軍を引き払って鎌倉を攻め滅ぼすことに繋がったのです。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">楠木多聞兵衛尉正成</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            天龍寺文書の中に出てくる楠木正成の名は「楠兵衛尉」となっています。<br />
+                            この「兵衛尉」というのは官職で、武士の多くは名字と名前（諱・いみな）の間に幼名や官職名を入れて名乗りました。<br />
+                            素直にこの名前から解釈すると楠木正成は若松荘の占拠を訴える時点で既に兵衛尉の官職を得ていたことになり、鎌倉幕府の御家人であったという説の根拠とされました。<br  />
+                            実際には御家人以外にも兵衛尉を名乗る場合があるため断定はできないそうですが、挙兵後後醍醐天皇が政権を握ると功績を認められて建武の新政開始直後に従五位下、翌年には従五位上まで出世しています。<br />
+                            当時の身分に照らし合わせると正成の出世上限は六位程度であり、さらに河内・摂津の二国を与えられていることから破格の扱いといえます。<br />
+                            また、役職としては後醍醐天皇が柱として設置した5つの役所のうち4つで登用されていることから、政治的な役割も期待されていたのかもしれません。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">建武の新政が生んだ対立</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            天皇中心の政治を志して始まった建武の新政は、しかし早々に内部の分裂を招きました。<br />
+                            歴史の授業でおなじみ二条河原落書に「この頃都に流行るもの 夜討ち 強盗 偽綸旨」とありますが、この「綸旨」は天皇の命令文書のこと。<br />
+                            後醍醐天皇は本来綸旨をもらう立場でない庶民たちにまで乱発し、しかも内容がころころ変わるというので天皇の命令の権威と信用を落とすことになりました。<br />
+                            また、後醍醐天皇方の勢力と足利尊氏をはじめとした旧幕府方にも対立の種が芽吹いていました。<br />
+                            護良親王は尊氏に対する敵意を隠さず、父である後醍醐天皇から武装を解いて僧籍に戻るよう言われても聞き入れませんでした。
+                            建武元年の6月には護良親王が足利尊氏を襲撃するという噂が流れ、問いただされた後醍醐天皇が親王の独断であり自分は無関係と釈明したという話が残っています。<br /><br />
+                            10月には参内した護良親王が捕縛されて足利方に引き渡されていますが、正成は同時期紀伊国で起こった謀反の鎮圧に当たっていました。<br />
+                            以降の孤立を考えると、正成本人の意思はどうあれこの頃には戦以外の政権中枢から遠ざけられていたのかもしれません。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">足利尊氏の離反</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            中先代の乱が起こった時、関東を統治するための鎌倉将軍府には後醍醐天皇の皇子・成良親王と足利尊氏の弟・直義がいました。<br />
+                            弟の窮地を救うべく尊氏は時行の討伐許可と自身の征夷大将軍任官を求め、いずれも却下されています。<br />
+                            いくら罪人として差し出したとはいえ、鎌倉脱出のどさくさにまぎれてわが子・護良親王を殺されている後醍醐天皇にしてみればこの頃には足利一族は警戒すべき対象となったのかもしれません。<br />
+                            この時護良親王が殺されず連れ出されるのみにとどまり、後醍醐天皇が時行討伐だけでも許可を出していれば、また状況は違ったのでしょうか。<br /><br />
+                            最終的に尊氏は無許可のまま出立して鎌倉を奪い返し、後醍醐天皇の上洛命令を無視して鎌倉で統治を始めました。<br />
+                            この振る舞いをもって後醍醐天皇は足利尊氏の謀反と認め、新田義貞を討伐に向かわせます。<br />
+                            新田軍は撃破されたものの西宮浜で楠木軍が足利軍を破り、尊氏は九州に追いやられることになりました。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">楠木正成から足利尊氏への評価</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            足利軍を九州へ追いやった後、楠木正成は足利尊氏との和睦を提案しています。<br />
+                            その内容がまた驚いたもので、「自分が務めるので新田義貞を討伐した上で尊氏を呼び戻そう」というものでした。<br />
+                            内容をかいつまんだところ「天皇も新田も人望が無いので皆尊氏についていってしまった。足利軍は西国を平定してまた戻ってくるがその時には止める術が無くなるから今のうちに和睦しよう。」ということだそうです。<br />
+                            あまりにも身もふたもない話ですが、実際のところ関東から上洛する際ですら新田軍は足利軍に破れていますし、これが西国まで味方につけて数を大幅に増やしてきたならなすすべもなかったと思います。<br  />
+                            強大な敵となりうる相手だからこそ、正成は尊氏を高く評価してどうにか味方に戻そうと考えたのでしょう。<br />
+                            当然ながらこの申し出は却下され、足利軍は正成の予想した通り軍勢を増して京に向かってくることになります。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">湊川の戦いへ</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            足利軍東上の報を受けた後醍醐天皇はすぐさま楠木正成に対して新田軍への合流、迎撃を命じました。<br />
+                            正成は圧倒的大軍を相手にすることになることを踏まえて作戦を奏上していますが、取次の公家から却下されてしまいました。<br />
+                            この時の作戦は一度天皇が比叡山に逃れて足利軍を京都に迎え入れ、補給路を封鎖して兵糧攻めにした上で順滅するというもの。<br />
+                            戦う前から敗走しろと言われたようなもので、天皇や公家からすれば面子が立たないというのもわからなくはありません。<br />
+                            しかしこのことにより、楠木軍は圧倒的不利な立場で足利軍に挑まなければならなくなりました。<br /><br />
+                            正成は戦に臨むにあたり「勝つための策を退けてただぶつかれというのは討死しろということ、望むところです」という旨のことを言ったとされています。<br />
+                            やけくその雰囲気も感じますが、実際に楠木軍は奮戦するものの敗北し、弟・正季と7度生まれ変わって…という言葉を交わして刺し違える最期を迎えました。<br />
+                            武士の自決といえば切腹ですが、切腹が名誉と結びついたのは戦国時代も終わりごろなのでまだずっと先の話です。
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="./">トップページに戻る</a>
+
+            <div id="footer-placeholder"></div>
+        </div>
+
+        <div id="message-dialog" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>生前の正成公について調べたことを記載しています。<br>
+                    みやもとの好みにより項目を取捨選択していたり、感想等を多分に含みますがご了承ください。</p>
+                </div>
+            </div>
+            <button id="message-close-button" class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+        <script src="js/script.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                once: true
+            });
+        </script>
+    </body>
+</html>
