@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>楠木正成公非公式ファンサイト</title>
+        <link rel="icon" href="img/favicon.ico">
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+        <link rel="manifest" href="img/site.webmanifest">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <section class="hero">
+                <div class="hero-body" 
+                data-aos="fade-down" 
+                data-aos-duration="1000" 
+                style="background-image: url('img/gobosho.JPG'); background-size: cover; background-color:rgba(255,255,255,0.5); background-blend-mode:lighten;">
+                    <h1 class="title">祭神・大楠公</h1>
+                    <p class="subtitle">死後の評価や楠公崇敬の経緯について</p>
+                    <button id="btnAbout" class="button is-primary">このページについて</button>
+                </div>
+            </section>
+
+            <div id="menu-placeholder"></div>
+
+            <div class="columns">
+                <div class="column m-3">
+                    <div class="card">
+                        <div class="card-image"
+                            data-aos="fade-right" 
+                            data-aos-duration="1000" >
+                            <figure class="image">
+                                <img src="img/tourou.JPG" alt="" />
+                            </figure>
+                        </div>
+                        <div class="content">
+                            <p>菊水紋の灯籠（湊川神社）</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column m-3">
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">足利方からの評価</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            楠木正成の死後、足利尊氏は上洛を果たし翌月には京都を制圧しました。<br />
+                            すんなり事態が進んだあたり、楠木正成の存在が戦局において非常に大きかったことがうかがえます。<br />
+                            では、目の上のたんこぶだった正成を尊氏がどう扱ったのか。<br /><br />
+                            『太平記』によれば、尊氏は正成の首を京都の六条河原に晒した後に妻子に送り届けたとされています。<br />
+                            別の資料には正成たちが最期を迎えた湊川近くの魚御堂に50町の所領を寄進して僧に供養させたとあります。<br />
+                            真偽は定かではありませんが、尊氏は正成に対して一定の敬意を払っていたのではないでしょうか。<br /><br />
+                            また、足利方寄りとされる歴史書『梅松論』では「楠木正成は武勇に優れ、その死は惜しまれる」という旨の記述があり、武将としての評価は非常に高いように思えます。<br />
+                            とはいえ室町幕府にとっては初代将軍の敵でしたし、足利を後ろ盾に天皇になった北朝にとっても快い存在ではなかったでしょう。<br />
+                            正成ならびに楠木一族は朝敵とされ、賊として名誉は奪われた状態でした。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">武士への影響</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            その後長らく朝敵とされていた中、子孫を名乗る大饗正虎が赦免を歎願します。<br />
+                            松永久秀や足利義輝の執り成しもあり、永禄2年に正親町天皇の綸旨を得て名誉回復が認められました。<br />
+                            これにより正虎は楠木の姓を名乗るようになり、同時に楠木流の戦術・戦法が研究されるようになります。<br />
+                            太平記に描かれた楠木正成の姿は武将たちに影響を与え、戦上手と知られた真田家の戦法にもその影響が見られるそうです。<br /><br />
+                            しかし、この時点では朝敵でなくなったというだけで、個人的な尊敬の対象にはなっても神社の祭神となるような扱いには至りませんでした。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">庶民文化の中で</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            庶民の中で楠木正成の存在が広まったのは、江戸時代に現れた「太平記読み」の登場からとされています。<br />
+                            講談師の前身であった彼らは街角で太平記を読み聞かせ、庶民たちは話に出てくる英雄たちの戦いを楽しみました。<br />
+                            特に楠木正成はその武勇と悲劇的な最期から人気を博し、その後も歌舞伎や浄瑠璃などの演目に取り入れられていきます。<br />
+                            日本史の授業でおなじみ近松門左衛門や滝沢馬琴など大衆文化の担い手たちも正成を題材に作品を書きました。<br /><br />
+                            これは個人的な邪推ですが、当時の庶民が政治批判を込めて声援を送る先として幕府に立ち向かった楠木正成を選んだのかもしれません。<br />
+                            下手な政治批判は即取り締まりの危険もあったでしょうし、実際に忠臣蔵は事件を起こした浅野内匠頭と吉良上野介ではなく、まさに南北朝時代の人物である塩冶判官と高師直に置き換えられています。<br />
+                            やられ役の吉良上野介が、史実では正成の嫡男である楠木正行を打ち破った高師直に置き換えられたあたり、なんとなく因果を感じるのは私だけでしょうか？<br /><br />
+                            こうした文化面での親しみからか、江戸時代の末には楠木墓所を訪れる人が一日に千人にもなったそうです。<br />  
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">水戸学の影響</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            江戸時代は様々な学問が生まれた時代でした。<br />
+                            儒学・朱子学・国学・蘭学など歴史の授業で聞いたことのある名前が並びますが、楠公崇敬において特に著名なのは水戸学でしょう。<br /><br />
+                            水戸学は『大日本史』編纂事業を源流として生まれたのですが、事業を興したのは水戸光圀。時代劇でおなじみ水戸のご老公です。<br />
+                            彼は大日本史の編纂を進める中で皇統の正統を南朝と考えるようになったらしく、最期まで南朝に仕えた楠木正成を忠臣として称えていました。<br />
+                            彼は幕府の許可を得て隠居した後、楠木正成墓所に墓碑を建て堂宇を建立しています。<br />
+                            それ以前にも豊臣秀吉の時代に墓地周りが免租地に指定されたり五輪供養塔が建てられたりはしていたそうですが、朝敵にされたとはいえ南朝の大将格ともいえる武将の眠る場所にふさわしくないほど荒れ果てていたようです。<br />
+                            直後に墓前で楠公360年祭が行われていますが、これも光圀が墓を整備したことが影響したのではないでしょうか。<br /><br />
+                            水戸学は水戸藩9代藩主徳川斉昭によって継承され、尊皇攘夷の思想を発展させた末に幕末の維新志士たちに影響を与えました。<br />
+                            水戸光圀が称えた楠木正成への敬意も、水戸学に含まれ後に引き継がれていったのかもしれません。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">初めての楠公祭祀</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            日本で初めて楠木正成を祭神・大楠公として祀った記録は楠公墓碑建立よりも30年ほど前、寛文三年の佐賀藩になります。<br />
+                            佐賀藩士・深江信渓たちが京都の仏師に楠木正成・正行の親子像を制作させたのが発端でした。<br />
+                            人心に忠孝の念を深めたいという思いから藩内で資金を集め、藩主・鍋島光茂の賛同も得た上で「桜井の別れ」をテーマに依頼したそうです。<br />
+                            完成した像は永明寺に置かれ、毎年の祭祀には藩主や重臣も参列したといわれています。<br /><br />
+                            信渓の死後はしばらく祭祀が途切れ、再び佐賀で楠公祭祀が行われたのは幕末でした。<br />
+                            枝吉神陽が楠木正成・正行親子の忠義を称えるための祭祀を行うための団体として義祭同盟を結成し、当時楠公像が移されていた梅林庵で祭祀を行いました。<br />
+                            祭祀の後に尊王攘夷の議論を行ったり政治的な意図が濃いところもありますが、ここから歴史に名を残した人材が数多く輩出されたこともあり、明治以降の楠公崇敬にも少なからず影響したのではないかと思います。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">尊王攘夷と楠公参詣</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            万延元年（1860年）から慶応3年（1867年）にかけて、歴史に名を残した人物が次々に楠公墓所を訪れた記録があります。<br />
+                            久坂玄瑞、新島襄、勝海舟、坂本龍馬、桂小五郎（後の木戸孝允）、伊東甲子太郎…と、一部名前を並べただけでもそうそうたる顔ぶれです。<br />
+                            少しさかのぼれば嘉永4年（1851年）には吉田松陰が楠公墓所を訪れていますし、著名人に限らなければ参詣者はもっと多かったことでしょう。<br /><br />
+                            彼らはみな尊王攘夷の思想を持った人でした。水戸学等の広まりにより天皇への忠義が強調された結果ではあるのでしょうが、幕府からの弾圧や旧来勢力との対立の影響もあったのではと思います。<br />
+                            吉田松陰は最初の参詣から10年と経たないうちに安政の大獄で処刑されていますし、他の参詣者の何名かも参詣後さほど経たず命を落としています。<br />
+                            それを抜きにしても黒船の来航から開国に至るまでの目まぐるしさ、外国勢力という未知の脅威は国の行く先を憂い今後の生活を不安視するには十分だったことでしょう。<br />
+                            明日の命をも知れぬ状況の中、天皇の忠臣として最期を遂げた楠木正成が理想と崇められ自分を重ねて奮い立たせる存在となったのも不思議はありません。<br /><br />
+                            そう考えると、楠公墓所参詣は彼らにとって本来の意味での聖地巡礼だったのかもしれません。
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <header class="card-header">
+                          <p class="card-header-title">明治政府と楠公崇敬</p>
+                          <button class="card-header-icon" aria-label="more options" onclick="toggleCard(this)">
+                            <span class="icon">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </header>
+                        <div class="card-content" style="display: none;">
+                          <div class="content">
+                            慶応4年（1868年）、伊藤俊輔（後の博文）ほか有志が楠公神社の創建を建議しました。<br />
+                            国家主体での楠公神社の創建について願い出られたのはこれが初めてではなく、大政奉還によって政権が朝廷に返されるよりも前に二度別のところから発せられています。<br /><br />
+                            まず文久4年（1864年）に薩摩藩主・島津久光から候補地を湊川として神社創建が請願されます。<br />
+                            祭祀対象となったのは楠木正成のほかに後醍醐天皇の皇子である護良親王、『神皇正統記』を著者とされる北畠親房でした。<br />
+                            この請願は朝廷に許可されたものの、当時の情勢により計画が中断され実現には至りませんでした。<br /><br />
+                            次に出てくるのは尾張藩です。慶応3年（1867年）に尾張藩主・徳川慶勝が楠公神社の創建を建議し、ここでは京都吉田神楽岡が候補とされました。<br />
+                            こちらも一度は話が進みかけたものの、中断していた薩摩藩の計画再開の動きや、歴史的経緯で楠公祭祀に思うところのある水戸藩から創建事業一任の請願等もあり、なかなかスムーズには進まなかったようです。<br /><br />
+                            最終的に政府は「国家の事業として特定の藩ではなく政府によって創建するべき」という考えのもと、先の伊藤博文らの建議に話をまとめて湊川神社を創建することになります。<br /><br />
+                            結果として国家の英雄と祀り上げられた楠木正成はその後国民教育の教材的な存在となり、戦後は逆に触れざるべきと遠巻きにされることになりました。<br />
+                            時の権力に利用されたようにも感じてしまいますが、それでも湊川神社は地元にはなじみ深い「楠公さん」として親しまれています。
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="./">トップページに戻る</a>
+
+            <div id="footer-placeholder"></div>
+        </div>
+
+        <div id="message-dialog" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>正成公死後の崇敬について調べたことを記載しています。<br />
+                    みやもとの好みにより項目を取捨選択していたり、感想等を多分に含みますがご了承ください。<br />
+                    文中は敬称略です。
+                  </p>
+                </div>
+            </div>
+            <button id="message-close-button" class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+        <script src="js/script.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                once: true
+            });
+        </script>
+    </body>
+</html>
