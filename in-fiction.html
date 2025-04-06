@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>楠木正成公非公式ファンサイト</title>
+        <link rel="icon" href="img/favicon.ico">
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+        <link rel="manifest" href="img/site.webmanifest">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </head>
+    <body id="in-fiction">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-body" 
+                data-aos="fade-down" 
+                data-aos-duration="1000" 
+                style="background-image: url('img/books.JPG'); background-size: cover; background-color:rgba(255,255,255,0.5); background-blend-mode:lighten;">
+                    <h1 class="title">創作における楠木正成</h1>
+                    <p class="subtitle">正成公が登場する創作物（主に小説）について</p>
+                    <button id="btnAbout" class="button is-primary">このページについて</button>
+                </div>
+            </section>
+
+            <div id="menu-placeholder"></div>
+
+            <div class="columns">
+                <div class="column is-full">
+                    <div class="content m-5">
+                        <div class="box">
+                            <p>
+                                正成公が登場する創作作品について、みやもとが読めたものを中心に紹介しています。<br>
+                                作品の中で正成公がどんな風に描かれているかと、それに対する感想がメインになります。<br>
+                                買えるものについては購入リンクがありますが、アフィリエイトはないのでみやもとに一銭も入りません。<br>
+                                リンク先のお店も完全に好みで選んでいます。ご了承ください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="columns">
+                                <div id="book-details" class="column">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="book-list" class="column is-half">
+                </div>
+            </div>
+
+            <a href="./">トップページに戻る</a>
+
+            <div id="footer-placeholder"></div>
+        </div>
+
+        <div id="message-dialog" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>正成公が登場する創作作品について書いています。<br>
+                    みやもとの好みと感想が多分に反映されています。<br>
+                    購入リンクはありますがアフィリエイトはないです。</p>
+                </div>
+            </div>
+            <button id="message-close-button" class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+        <script src="js/script.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                once: true
+            });
+        </script>
+    </body>
+</html>
