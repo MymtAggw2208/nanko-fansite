@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>楠木正成公非公式ファンサイト</title>
+        <link rel="icon" href="img/favicon.ico">
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+        <link rel="manifest" href="img/site.webmanifest">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </head>
+    <body id="related-people">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-body" 
+                data-aos="fade-down" 
+                data-aos-duration="1000" 
+                style="background-image: url('img/kanban.JPG'); background-size: cover; background-color:rgba(255,255,255,0.5); background-blend-mode:lighten;">
+                    <h1 class="title">関連人物</h1>
+                    <p class="subtitle">楠木正成を取り巻く人物について</p>
+                    <button id="btnAbout" class="button is-primary">このページについて</button>
+                </div>
+            </section>
+
+            <div id="menu-placeholder"></div>
+
+            <div class="columns">
+                <div id="people-detail" class="column m-3">
+                    <div class="card">
+                        <header class="card-header">
+                            <p id="detail-title" class="card-header-title">
+                            </p>
+                        </header>
+                        <div class="card-image">
+                            <figure class="image">
+                                <img id="detail-image" src="img/init.jpg"
+                                style="object-fit: cover;" alt="" >
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div id="detail-content" class="content" style="overflow-y: auto;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="people-list" class="column m-3">
+                </div>
+            </div>
+
+            <a href="./">トップページに戻る</a>
+
+            <div id="footer-placeholder"></div>
+        </div>
+
+        <div id="message-dialog" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <p>生前の正成公の関係者について書いています。<br>
+                    みやもとの好みにより項目を取捨選択していたり、感想等を多分に含みますがご了承ください。</p>
+                </div>
+            </div>
+            <button id="message-close-button" class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+        <script src="js/script.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                once: true
+            });
+        </script>
+    </body>
+</html>

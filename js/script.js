@@ -115,8 +115,7 @@ if (currentPage === 'in-fiction') {
               <div class="tabs">
                 <ul id="detail-tabs">
                   <li class="is-active" data-tab="info-tab"><a>書籍情報</a></li>
-                  <li data-tab="summary-tab"><a>あらすじ</a></li>
-                  <li data-tab="review-tab"><a>感想</a></li>
+                  <li data-tab="summary-tab"><a>あらすじ・感想</a></li
                 </ul>
               </div>
               
@@ -139,10 +138,10 @@ if (currentPage === 'in-fiction') {
                 </div>
                 
                 <div id="summary-tab" class="tab-pane" style="display: none;">
+                  <p><strong>あらすじ:</strong></p>
                   <p>${book.summary}</p>
-                </div>
-                
-                <div id="review-tab" class="tab-pane" style="display: none;">
+                  <br />
+                  <p><strong>感想:</strong></p>
                   <p>${book.review}</p>
                 </div>
               </div>
@@ -173,5 +172,61 @@ if (currentPage === 'in-fiction') {
     .catch(error => {
       console.error('There has been a problem with your fetch operation:', error);
       document.getElementById('book-list').innerHTML = '<p>書籍情報の読み込みに失敗しました。</p>';
+    });
+} else if (currentPage === 'related-people') {
+  // 関連人物ページのスクリプト
+  fetch('people.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(people => {
+      const peopleList = document.getElementById('people-list');
+      // 関連人物一覧を生成
+      people.forEach((person, index) => {
+        peopleList.innerHTML += `
+          <div class="card person-card" data-id="${index}">
+            <div class="card-header">
+              <p class="card-header-title">
+                ${person.name}
+              </p>
+            </div>
+          </div>
+        `;
+      });
+
+      // 関連人物詳細を表示するためのイベントリスナーを追加
+      const personCards = document.querySelectorAll('.person-card');
+      const detailTitle = document.getElementById('detail-title');  // カードのタイトル
+      const detailImage = document.getElementById('detail-image');  // カードの画像
+      const detailContent = document.getElementById('detail-content');  // カードの内容
+
+      personCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const personId = parseInt(this.dataset.id);
+          const person = people[personId];
+          if (person) {
+            // タイトルと画像を更新
+            detailTitle.innerHTML = person.name;
+            detailImage.src = `img/${person.image}`;
+            detailImage.alt = person.name;
+
+            // 内容を更新
+            detailContent.innerHTML = `
+              <p><strong>生年:</strong> ${person.birth_year}</p>
+              <p><strong>没年:</strong> ${person.death_year}</p>
+              <p><strong>関連性:</strong> ${person.relation}</p>
+              <br />
+              <p>${person.description}</p>
+            `;
+          }
+        });
+      });
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+      document.getElementById('people-list').innerHTML = '<p>関連人物情報の読み込みに失敗しました。</p>';
     });
 }
