@@ -106,7 +106,7 @@ if (currentPage === 'in-fiction') {
           if (book) {
             // タブ式の表示に変更
             bookDetails.innerHTML = `
-              <div class="card-header">
+              <div class="card-header" style="box-shadow: none;">
                 <p class="card-header-title">
                   ${book.title}
                 </p>
@@ -146,25 +146,9 @@ if (currentPage === 'in-fiction') {
                 </div>
               </div>
             `;
-            
-            // タブ切り替え機能の追加
-            const tabs = document.querySelectorAll('#detail-tabs li');
-            tabs.forEach(tab => {
-              tab.addEventListener('click', function() {
-                // すべてのタブからアクティブクラスを削除
-                tabs.forEach(t => t.classList.remove('is-active'));
-                // クリックされたタブにアクティブクラスを追加
-                this.classList.add('is-active');
-                
-                // すべてのタブコンテンツを非表示
-                const tabPanes = document.querySelectorAll('.tab-pane');
-                tabPanes.forEach(pane => pane.style.display = 'none');
-                
-                // 対応するタブコンテンツを表示
-                const activeTabId = this.dataset.tab;
-                document.getElementById(activeTabId).style.display = 'block';
-              });
-            });
+
+            // タブ切り替え機能
+            setupTabSwitching();
           }
         });
       });
@@ -199,28 +183,46 @@ if (currentPage === 'in-fiction') {
 
       // 関連人物詳細を表示するためのイベントリスナーを追加
       const personCards = document.querySelectorAll('.person-card');
-      const detailTitle = document.getElementById('detail-title');  // カードのタイトル
-      const detailImage = document.getElementById('detail-image');  // カードの画像
-      const detailContent = document.getElementById('detail-content');  // カードの内容
+      const personDetail = document.getElementById('person-detail');  
 
       personCards.forEach(card => {
         card.addEventListener('click', function() {
           const personId = parseInt(this.dataset.id);
           const person = people[personId];
           if (person) {
-            // タイトルと画像を更新
-            detailTitle.innerHTML = person.name;
-            detailImage.src = `img/${person.image}`;
-            detailImage.alt = person.name;
-
             // 内容を更新
-            detailContent.innerHTML = `
-              <p><strong>生年:</strong> ${person.birth_year}</p>
-              <p><strong>没年:</strong> ${person.death_year}</p>
-              <p><strong>関連性:</strong> ${person.relation}</p>
-              <br />
-              <p>${person.description}</p>
+            personDetail.innerHTML = `
+              <div class="card-header" style="box-shadow: none;">
+                <p class="card-header-title">
+                  ${person.name}
+                </p>
+              </div>
+              
+              <div class="tabs">
+                <ul id="detail-tabs">
+                  <li class="is-active" data-tab="profile-tab"><a>略歴</a></li>
+                  <li data-tab="summary-tab"><a>人物詳細</a></li
+                </ul>
+              </div>
+              
+              <div id="tab-content">
+                <div id="profile-tab" class="tab-pane is-active">
+                  <img src="img/${person.image}" alt="${person.name}" class="person-image">
+                  <p><strong>生年:</strong> ${person.birth_year}</p>
+                  <p><strong>没年:</strong> ${person.death_year}</p>
+                  <p><strong>関係:</strong> ${person.relation}</p>
+                </div>
+                
+                <div id="summary-tab" class="tab-pane" style="display: none;">
+                  <p>${person.summary}</p>
+                  <br /><br />
+                  <p>${person.description}</p>
+                </div>
+              </div>
             `;
+            
+            // タブ切り替え機能
+            setupTabSwitching();
           }
         });
       });
@@ -229,4 +231,73 @@ if (currentPage === 'in-fiction') {
       console.error('There has been a problem with your fetch operation:', error);
       document.getElementById('people-list').innerHTML = '<p>関連人物情報の読み込みに失敗しました。</p>';
     });
+}
+
+function setupTabSwitching() {
+  const tabs = document.querySelectorAll('#detail-tabs li');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  
+  // すべての画像の読み込みを待ってから高さを計測する
+  const images = document.querySelectorAll('.tab-pane img');
+  
+  // 画像読み込み完了を待つ処理
+  const imagePromises = Array.from(images).map(img => {
+    if (img.complete) {
+      return Promise.resolve(); // すでに読み込み済みの場合
+    } else {
+      return new Promise(resolve => {
+        img.onload = resolve;
+        img.onerror = resolve; // エラーの場合も続行
+      });
+    }
+  });
+  
+  // すべての画像の読み込みが完了してから高さを計測
+  Promise.all(imagePromises).then(() => {
+    // いったんすべてのペインを表示して高さを測定
+    let maxHeight = 0;
+    
+    tabPanes.forEach(pane => {
+      pane.style.display = 'block';
+      pane.style.position = 'absolute'; // 一時的に絶対位置に
+      pane.style.visibility = 'hidden'; // 表示はしないが寸法は計測できる
+      
+      const height = pane.scrollHeight; // scrollHeightで内容全体の高さを取得
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+      
+      // 元の状態に戻す
+      pane.style.position = '';
+      pane.style.visibility = '';
+      
+      // アクティブでないタブは非表示に
+      if (!pane.classList.contains('is-active')) {
+        pane.style.display = 'none';
+      }
+    });
+    
+    // 高さを固定する
+    tabPanes.forEach(pane => {
+      pane.style.minHeight = `${maxHeight}px`;
+      pane.style.overflow = 'auto';
+    });
+  });
+  
+  // タブクリックイベントの設定（変更なし）
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      // すべてのタブからアクティブクラスを削除
+      tabs.forEach(t => t.classList.remove('is-active'));
+      // クリックされたタブにアクティブクラスを追加
+      this.classList.add('is-active');
+      
+      // すべてのタブコンテンツを非表示
+      tabPanes.forEach(pane => pane.style.display = 'none');
+      
+      // 対応するタブコンテンツを表示
+      const activeTabId = this.dataset.tab;
+      document.getElementById(activeTabId).style.display = 'block';
+    });
+  });
 }
