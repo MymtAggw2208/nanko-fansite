@@ -167,63 +167,90 @@ if (currentPage === 'in-fiction') {
       return response.json();
     })
     .then(people => {
-      const peopleList = document.getElementById('people-list');
-      // 関連人物一覧を生成
-      people.forEach((person, index) => {
-        peopleList.innerHTML += `
-          <div class="card person-card" data-id="${index}">
-            <div class="card-header">
-              <p class="card-header-title">
-                ${person.name}
-              </p>
-            </div>
-          </div>
-        `;
+      // グループ名をpeople.jsonから動的に抽出
+      const groups = {};
+      people.forEach(person => {
+        const group = person.group || 'その他';
+        if (!groups[group]) {
+          groups[group] = [];
+        }
+        groups[group].push(person);
       });
 
-      // 関連人物詳細を表示するためのイベントリスナーを追加
-      const personCards = document.querySelectorAll('.person-card');
-      const personDetail = document.getElementById('person-detail');  
+      const groupNames = Object.keys(groups);
+      const peopleList = document.getElementById('people-list');
+      peopleList.innerHTML = `
+        <div class="tabs is-toggle is-fullwidth" id="group-tabs">
+          <ul>
+            ${groupNames.map((g, i) => `<li${i === 0 ? ' class="is-active"' : ''} data-group="${g}"><a>${g}</a></li>`).join('')}
+          </ul>
+        </div>
+        <div id="group-panels">
+          ${groupNames.map((g, i) => `
+            <div class="group-panel" id="panel-${g}" style="${i === 0 ? '' : 'display:none;'}">
+              <nav class="panel has-background-white">
+                ${groups[g].map((person, idx) => `
+                  <a class="panel-block person-panel-link" data-group="${g}" data-id="${idx}">
+                    ${person.name}
+                  </a>
+                `).join('')}
+              </nav>
+            </div>
+          `).join('')}
+        </div>
+      `;
 
-      personCards.forEach(card => {
-        card.addEventListener('click', function() {
-          const personId = parseInt(this.dataset.id);
-          const person = people[personId];
-          if (person) {
-            // 内容を更新
-            personDetail.innerHTML = `
-              <div class="card-header" style="box-shadow: none;">
-                <p class="card-header-title">
-                  ${person.name}
-                </p>
-              </div>
-              
-              <div class="tabs">
-                <ul id="detail-tabs">
-                  <li class="is-active" data-tab="profile-tab"><a>略歴</a></li>
-                  <li data-tab="summary-tab"><a>人物詳細</a></li
-                </ul>
-              </div>
-              
-              <div id="tab-content">
-                <div id="profile-tab" class="tab-pane is-active">
-                  <img src="img/${person.image}" alt="${person.name}" class="person-image">
-                  <p><strong>生年:</strong> ${person.birth_year}</p>
-                  <p><strong>没年:</strong> ${person.death_year}</p>
-                  <p><strong>関係:</strong> ${person.relation}</p>
+      // タブ切り替え
+      const tabEls = peopleList.querySelectorAll('#group-tabs li');
+      const panelEls = peopleList.querySelectorAll('.group-panel');
+      tabEls.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabEls.forEach(t => t.classList.remove('is-active'));
+          this.classList.add('is-active');
+          const group = this.dataset.group;
+          panelEls.forEach(panel => {
+            panel.style.display = panel.id === `panel-${group}` ? '' : 'none';
+          });
+        });
+      });
+
+      // 詳細表示
+      const personDetail = document.getElementById('person-detail');
+      groupNames.forEach(group => {
+        const links = peopleList.querySelectorAll(`.person-panel-link[data-group="${group}"]`);
+        links.forEach((link, idx) => {
+          link.addEventListener('click', function() {
+            const person = groups[group][idx];
+            if (person) {
+              personDetail.innerHTML = `
+                <div class="card-header" style="box-shadow: none;">
+                  <p class="card-header-title">
+                    ${person.name}
+                  </p>
                 </div>
-                
-                <div id="summary-tab" class="tab-pane" style="display: none;">
-                  <p>${person.summary}</p>
-                  <br /><br />
-                  <p>${person.description}</p>
+                <div class="tabs">
+                  <ul id="detail-tabs">
+                    <li class="is-active" data-tab="profile-tab"><a>略歴</a></li>
+                    <li data-tab="summary-tab"><a>人物詳細</a></li>
+                  </ul>
                 </div>
-              </div>
-            `;
-            
-            // タブ切り替え機能
-            setupTabSwitching();
-          }
+                <div id="tab-content">
+                  <div id="profile-tab" class="tab-pane is-active">
+                    <img src="img/${person.image}" alt="${person.name}" class="person-image">
+                    <p><strong>生年:</strong> ${person.birth_year}</p>
+                    <p><strong>没年:</strong> ${person.death_year}</p>
+                    <p><strong>関係:</strong> ${person.relation}</p>
+                  </div>
+                  <div id="summary-tab" class="tab-pane" style="display: none;">
+                    <p>${person.summary}</p>
+                    <br /><br />
+                    <p>${person.description}</p>
+                  </div>
+                </div>
+              `;
+              setupTabSwitching();
+            }
+          });
         });
       });
     })
